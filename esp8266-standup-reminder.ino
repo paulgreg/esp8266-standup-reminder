@@ -22,17 +22,22 @@ void setup() {
   blinkRepeat(5, 100);
 }
 
+int state = 0;
 int minutes = 0;
 
 void loop() {
-  delay(MINUTE);
   minutes++;
-  if (minutes > 120) {
-    digitalWrite(LED, LOW);
-    ESP.deepSleep(0);
-  } else if (minutes > 60) {
-    digitalWrite(LED, HIGH);
-  } else {
-    blink(SECOND);
+  if (state == 0) {
+    delay(MINUTE - SECOND);
+    if (minutes < 60) blink(SECOND);
+    else state = 1;
+  }
+  if (state == 1) {
+    if (minutes < 120) blinkRepeat(60, SECOND);
+    else state = 2;
+  }
+  if (state == 2) {
+     digitalWrite(LED, LOW);
+     ESP.deepSleep(0);
   }
 }
