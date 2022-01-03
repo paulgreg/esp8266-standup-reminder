@@ -4,9 +4,9 @@
 #define MINUTE 60 * SECOND
 #define HOUR 60 * MINUTE
 
-#define ALARM_1 1 * HOUR
-#define ALARM_2 2 * HOUR
-#define SLEEP   3 * HOUR
+#define ALARM_1 60
+#define ALARM_2 120
+#define SLEEP   180
 
 
 void blink(int d) {
@@ -43,17 +43,17 @@ void loop() {
     }
   } else if (state == 1) {
     if (minutes < ALARM_2) {
-      Serial.println("turn on LED");
-      digitalWrite(LED, HIGH);
-      delay(MINUTE);
+      Serial.println("blink for one minute");
+      blinkRepeat(60, SECOND);
     } else {
       Serial.println("set state 2");
       state = 2;
     }
   } else if (state == 2) {
      if (minutes < SLEEP) {
-      Serial.println("blink for one minute");
-      blinkRepeat(60, SECOND);
+      Serial.println("turn on LED");
+      digitalWrite(LED, HIGH);
+      delay(MINUTE);
     } else {
       Serial.println("set state 3");
       state = 3;
