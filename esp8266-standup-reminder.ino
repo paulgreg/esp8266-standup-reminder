@@ -44,7 +44,7 @@ void loop() {
   } else if (state == 1) {
     if (minutes < ALARM_2) {
       Serial.println("blink for one minute");
-      blinkRepeat(60, SECOND);
+      blinkRepeat(30, SECOND);
     } else {
       Serial.println("set state 2");
       state = 2;
