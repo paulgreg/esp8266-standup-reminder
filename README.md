@@ -3,7 +3,7 @@
 A simple hardware device to remind you to standup after one hour, typically when you’re sitting all day at your office.
 
 It is made of a LED, blinking once per minute. 
-After one jour, it stays lit to remind you to standup and move a little bit.
+After one hour, it stays lit to remind you to standup and move a little bit.
 
 You can then press the button to begin new cycle.
 
